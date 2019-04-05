@@ -52,6 +52,8 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+    cable_ready (3.0.0)
+      activesupport (>= 5.0.0)
     capybara (3.16.1)
       addressable
       mini_mime (>= 0.1.3)
@@ -109,6 +111,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.1)
     rack (2.0.7)
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -139,6 +143,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.0)
     regexp_parser (1.4.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
@@ -169,6 +174,12 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.0)
+    stimulus_reflex (0.3.2)
+      actioncable (>= 5.2.1)
+      actionpack (>= 5.2.1)
+      cable_ready (>= 3.0.0)
+      nokogiri
+      rack
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -184,6 +195,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (4.0.2)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -203,18 +218,21 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
   rails (~> 5.2.1)
+  redis (~> 4.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  stimulus_reflex
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.6.1p33
+   ruby 2.6.2p47
 
 BUNDLED WITH
    1.17.2

@@ -1,5 +1,13 @@
 {
   "name": "live_view",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^4.0.2",
+    "actioncable": "^5.2.3",
+    "morphdom": "^2.5.3",
+    "stimulus": "^1.1.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.2.1"
+  }
 }
