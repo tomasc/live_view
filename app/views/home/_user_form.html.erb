@@ -1,0 +1,7 @@
+<section id='user-form' data-controller="user" data-action="keyup->user#onKeyUp">
+  <%= simple_form_for @user || User.new, url: '' do |form| %>
+    <%= form.input :email %>
+    <%= form.input :age %>
+    <%= form.button :submit, disabled: true %>
+  <% end %>
+</section>

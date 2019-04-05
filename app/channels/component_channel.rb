@@ -6,18 +6,42 @@ class ComponentChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    html = HomeController.renderer.render(
-      partial: '/home/controller',
-      locals: {
-        message: %w[Hi! Hello Namaste Ohio Tak Nazdar Ahoy!].shuffle.first
-      }
-    )
+    data = ActionController::Parameters.new(data)
+    name = data[:operation][:name]
 
-    cable_ready["ComponentChannel#{user_id}"].morph(
-      selector: 'section#my-component',
-      html: html
-    )
-    
+    case name
+    when 'GREET'
+      html = HomeController.renderer.render(
+        partial: '/home/example_controller',
+        locals: { message: %w[Hi! Hello Namaste Ohio Tak Nazdar Ahoy!].sample }
+      )
+
+      cable_ready["ComponentChannel#{user_id}"].morph(
+        selector: '#example-controller',
+        html: html
+      )
+
+    when 'FORM'
+      email = data[:operation][:email]
+      age = data[:operation][:age]
+
+      user = User.new(email: email, age: age)
+      user.valid?
+
+      html = HomeController.renderer.render(
+        partial: '/home/user_form',
+        assigns: {
+          user: user
+        }
+      )
+
+      cable_ready["ComponentChannel#{user_id}"].morph(
+        selector: '#user-form',
+        html: html
+      )
+
+    end
+
     cable_ready.broadcast
   end
 end
