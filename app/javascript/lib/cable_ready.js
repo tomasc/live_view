@@ -129,7 +129,7 @@ const DOMOperations = {
   },
 };
 
-export default class StimulusReflex {
+export default class {
   static perform(operations) {
     for (let name in operations) {
       if (operations.hasOwnProperty(name)) {
