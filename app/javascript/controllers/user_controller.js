@@ -5,7 +5,7 @@ import _ from 'lodash'
 export default class extends Controller {
   initialize() {
     this.dirtyFields = [];
-    this.onKeyUp = _.debounce(this.onKeyUp, 500)
+    this.onKeyUp = _.debounce(this.onKeyUp, 100)
 
     document.addEventListener('cable-ready:after-morph', (e) => {
       for (let id of this.dirtyFields) {
