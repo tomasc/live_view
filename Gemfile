@@ -37,7 +37,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'webpacker', '~> 4.0'
-gem 'stimulus_reflex'
+gem 'cable_ready'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

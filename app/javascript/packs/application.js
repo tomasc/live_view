@@ -1,15 +1,16 @@
 import ActionCable from 'actioncable';
-import StimulusReflex from "lib/stimulus_reflex"
+import CableReady from 'lib/cable_ready'
 
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
+import 'controllers';
 
-document.addEventListener('DOMContentLoaded', function () {
-  if (document.querySelector('body[data-cable]')) {
-    StimulusReflex.connect()
+window.App || (window.App = {});
 
-    const application = Application.start()
-    const context = require.context("../controllers", true, /_controller\.js$/)
-    application.load(definitionsFromContext(context));
+App.cable || (App.cable = ActionCable.createConsumer());
+
+App.component = App.cable.subscriptions.create({ channel: "ComponentChannel", room: window.userId }, {
+  received: function (data) {
+    if (data.cableReady) {
+      CableReady.perform(data.operations);
+    }
   }
 });
