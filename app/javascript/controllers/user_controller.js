@@ -1,12 +1,12 @@
-import { Controller } from "stimulus"
+import { Controller } from 'stimulus';
 
-import _ from 'lodash'
-import formToObject from 'form_to_object'
+import _ from 'lodash';
+import formToObject from 'form_to_object';
 
 export default class extends Controller {
   initialize() {
     this.dirtyFields = [];
-    this.onKeyUp = _.debounce(this.onKeyUp, 250)
+    this.onKeyUp = _.debounce(this.onKeyUp, 250);
 
     document.addEventListener('cable-ready:after-morph', (e) => {
       for (let id of this.dirtyFields) {

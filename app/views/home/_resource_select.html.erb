@@ -1,0 +1,13 @@
+<section id='resource-select' data-controller="resource-select">
+  <%= text_field_tag :search, str, data: { action: "keyup->resource-select#onKeyUp", target: "resource-select.search" } %><br />
+
+  <%= hidden_field_tag :ids, Array(items).map(&:id).join(','), data: { target: "resource-select.ids" } %><br />
+
+  <ul class='selected-items'>
+    <%= render partial: 'home/item_selected', collection: Array(items), as: :item %>
+  </ul>
+
+  <ul class='options' style='background: yellow;'>
+    <%= render partial: 'home/item_selectable', collection: Array(search), as: :item %>
+  </ul>
+</section>
