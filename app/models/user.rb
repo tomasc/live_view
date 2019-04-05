@@ -7,5 +7,6 @@ class User
   attribute :age, Integer
 
   validates :email, :age, presence: true
+  validates :email, length: { minimum: 5 }
   validates :age, numericality: { greater_than: 18 }
 end
