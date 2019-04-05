@@ -1,11 +1,12 @@
 import { Controller } from "stimulus"
 
 import _ from 'lodash'
+import formToObject from 'form_to_object'
 
 export default class extends Controller {
   initialize() {
     this.dirtyFields = [];
-    this.onKeyUp = _.debounce(this.onKeyUp, 100)
+    this.onKeyUp = _.debounce(this.onKeyUp, 250)
 
     document.addEventListener('cable-ready:after-morph', (e) => {
       for (let id of this.dirtyFields) {
@@ -20,11 +21,8 @@ export default class extends Controller {
       this.dirtyFields.push(e.target.id);
     }
 
-    let email = document.querySelector('#user_email').value;
-    let age = document.querySelector('#user_age').value;
-
     App.component.send(
-      { operation: { name: 'FORM', email: email, age: age } }
+      { operation: { name: 'FORM', params: formToObject(this.element.querySelector('form')) } }
     );
   }
 }

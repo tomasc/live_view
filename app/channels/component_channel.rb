@@ -22,10 +22,9 @@ class ComponentChannel < ApplicationCable::Channel
       )
 
     when 'FORM'
-      email = data[:operation][:email]
-      age = data[:operation][:age]
+      params = data[:operation][:params]
 
-      user = User.new(email: email, age: age)
+      user = User.new(params['user'].permit!.to_hash)
       user.valid?
 
       html = HomeController.renderer.render(

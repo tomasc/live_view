@@ -2765,6 +2765,11 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+form_to_object@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/form_to_object/-/form_to_object-2.0.0.tgz#e4b92c982b35e497a6ad2770dd63973adbf8c5bf"
+  integrity sha512-nj+bXqeQOZWPhzAgXWPU2Dm2PVuHcpiA8gpHObWWCP+UZuzG1GC3gcQ0MdSXj2brdNdoQILLqtO4Z8CqzD/M+A==
+
 forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
