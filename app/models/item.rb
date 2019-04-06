@@ -30,7 +30,7 @@ class Item
   end
 
   def self.search(str)
-    return unless str.length > 0
+    return [] unless str.length > 0
 
     all.select do |item|
       item.title =~ /#{str}/i
